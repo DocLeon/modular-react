@@ -26,13 +26,9 @@ const usePaymentMethods = () => {
   return paymentMethods
 }
 
-export const Payment = () => {
-  const paymentMethods = usePaymentMethods()
-  return (
-    <div>
-      <h3>Payment</h3>
-      <div>
-        {paymentMethods.map((method) => (
+const PaymentMethods = ({paymentMethods}: {paymentMethods: LocalPaymentMethod[]}) => (
+    <>
+      {paymentMethods.map((method) => (
           <label key={method.provider}>
             <input
               type="radio"
@@ -43,6 +39,15 @@ export const Payment = () => {
             <span>{method.label}</span>
           </label>
         ))}
+    </>)
+
+export const Payment = () => {
+  const paymentMethods = usePaymentMethods()
+  return (
+    <div>
+      <h3>Payment</h3>
+      <div>
+        <PaymentMethods paymentMethods = {paymentMethods}/>
       </div>
     </div>
   )
