@@ -3,8 +3,6 @@ import { useEffect, useState } from "react"
 type LocalPaymentMethod = {provider: string, label: string}
 type RemotePaymentMethod = {name: string}
 
-const apiResponse = JSON.stringify([{name: 'apple'},{name: 'google'}])
-
 export const Payment = () => {
   const [paymentMethods, setPaymentMethods] = useState<LocalPaymentMethod[]>([])
 
