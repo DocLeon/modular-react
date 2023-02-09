@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 type LocalPaymentMethod = {provider: string, label: string}
 type RemotePaymentMethod = {name: string}
 
-export const Payment = () => {
+const usePaymentMethods = () => {
   const [paymentMethods, setPaymentMethods] = useState<LocalPaymentMethod[]>([])
 
   useEffect(() => {
@@ -22,7 +22,12 @@ export const Payment = () => {
     fetchPaymentMethods()
       .catch(console.error)
   },[])
+    
+  return paymentMethods
+}
 
+export const Payment = () => {
+  const paymentMethods = usePaymentMethods()
   return (
     <div>
       <h3>Payment</h3>
