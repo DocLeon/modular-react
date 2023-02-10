@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
-
-type LocalPaymentMethod = {provider: string, label: string}
-type RemotePaymentMethod = {name: string}
+import { convertPaymentMethods } from "./convertPaymentMethods"
+import { LocalPaymentMethod, RemotePaymentMethod } from "./LocalPaymentMethod"
 
 const usePaymentMethods = () => {
   const [paymentMethods, setPaymentMethods] = useState<LocalPaymentMethod[]>([])
@@ -12,11 +11,7 @@ const usePaymentMethods = () => {
       const response = await fetch(url)
       console.log(response)
       const methods: RemotePaymentMethod[] = await response.json()
-      const extended: LocalPaymentMethod[] = methods.map((method: RemotePaymentMethod)=>({
-        provider: method.name,
-        label: `Pay with ${method.name}`
-      }))
-      extended.push({provider: 'cash', label: 'Pay in cash'})
+      const extended: LocalPaymentMethod[] = convertPaymentMethods(methods)
       setPaymentMethods(extended)
     }
     fetchPaymentMethods()
@@ -34,7 +29,7 @@ const PaymentMethods = ({paymentMethods}: {paymentMethods: LocalPaymentMethod[]}
               type="radio"
               name="payment"
               value={method.provider}
-              defaultChecked={method.provider === 'cash'}
+              defaultChecked={method.isDefault}
             />
             <span>{method.label}</span>
           </label>
