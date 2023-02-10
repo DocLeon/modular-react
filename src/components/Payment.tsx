@@ -1,5 +1,5 @@
 import { PaymentMethods } from "./PaymentMethods"
-import { usePaymentMethods } from "./usePaymentMethods"
+import { usePaymentMethods } from "../hooks/usePaymentMethods"
 
 export const Payment = () => {
   const paymentMethods = usePaymentMethods()

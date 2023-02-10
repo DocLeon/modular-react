@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchPaymentMethods } from "./fetchPaymentMethods";
-import { LocalPaymentMethod } from "./LocalPaymentMethod";
+import { fetchPaymentMethods } from "../adapters/fetchPaymentMethods";
+import { LocalPaymentMethod } from "../LocalPaymentMethod";
 
 export const usePaymentMethods = () => {
   const [paymentMethods, setPaymentMethods] = useState<LocalPaymentMethod[]>([]);

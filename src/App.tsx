@@ -1,5 +1,5 @@
 import React from 'react';
-import { Payment } from './Payment';
+import { Payment } from './components/Payment';
 
 function App() {
   return (
