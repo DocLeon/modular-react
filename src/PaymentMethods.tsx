@@ -1,6 +1,6 @@
-import { LocalPaymentMethod } from "./LocalPaymentMethod";
+import { LocalPaymentMethod } from "./LocalPaymentMethod"
 
-export const PaymentMethods = ({ paymentMethods }: { paymentMethods: LocalPaymentMethod[]; }) => (
+export const PaymentMethods = ({ paymentMethods }: { paymentMethods: LocalPaymentMethod[] }) => (
   <>
     {paymentMethods.map((method) => (
       <label key={method.provider}>
@@ -12,4 +12,4 @@ export const PaymentMethods = ({ paymentMethods }: { paymentMethods: LocalPaymen
         <span>{method.label}</span>
       </label>
     ))}
-  </>);
+  </>)
