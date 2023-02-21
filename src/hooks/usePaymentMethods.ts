@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchPaymentMethods } from "../adapters/fetchPaymentMethods";
-import { LocalPaymentMethod } from "../LocalPaymentMethod";
+import { PaymentMethod } from "../model/LocalPaymentMethod";
 
 export const usePaymentMethods = () => {
-  const [paymentMethods, setPaymentMethods] = useState<LocalPaymentMethod[]>([]);
+  const [paymentMethods, setPaymentMethods] = useState<PaymentMethod[]>([]);
 
   useEffect(() => {
     const loadPaymentMethods = async () => {
