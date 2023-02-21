@@ -1,17 +1,10 @@
 import { PaymentMethods } from "./PaymentMethods"
 import { usePaymentMethods } from "../hooks/usePaymentMethods"
-import { useMemo, useState } from "react"
+import { useRoundUp } from "../hooks/useRoundUp"
 
 export const Payment = ({amount}: {amount : number}) => {
   const paymentMethods = usePaymentMethods()
-  const [agreeToDonate, setAgreeToDonate] = useState<boolean>(false)
-  const {total, tip} = useMemo(
-    () => ({
-      total: agreeToDonate ? Math.floor(amount + 1): amount,
-      tip: parseFloat((Math.floor(amount + 1) - amount).toPrecision(10))
-    }),
-    [amount, agreeToDonate]
-  )
+  const {agreeToDonate, updateAgreeToDonate, total, tip} = useRoundUp(amount)
   return (
     <div>
       <h3>Payment</h3>
@@ -23,7 +16,7 @@ export const Payment = ({amount}: {amount : number}) => {
           <input
             type="checkbox"
             checked={agreeToDonate}
-            onChange={() => setAgreeToDonate(!agreeToDonate)}
+            onChange={updateAgreeToDonate}
           />
           <p>
             {agreeToDonate
