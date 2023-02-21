@@ -1,4 +1,4 @@
-import { PaymentMethod } from "../model/PaymentMethod"
+import { PaymentMethod } from "../types/PaymentMethod"
 
 export const PaymentMethods = ({ paymentMethods }: { paymentMethods: PaymentMethod[] }) => (
   <>
