@@ -1,5 +1,5 @@
 import { convertPaymentMethods } from "../model/convertPaymentMethods"
-import { PaymentMethod } from "../model/LocalPaymentMethod"
+import { PaymentMethod } from "../model/PaymentMethod"
 
 export const fetchPaymentMethods = async () => {
   const url = 'http://localhost:3000/api/payment-methods'

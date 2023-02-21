@@ -1,5 +1,5 @@
 import { buildLocalPaymentMethod } from "./buildLocalPaymentMethod"
-import { RemotePaymentMethod, PaymentMethod as PaymentMethod } from "./LocalPaymentMethod"
+import { RemotePaymentMethod, PaymentMethod as PaymentMethod } from "./PaymentMethod"
 
 export const convertPaymentMethods = (methods: RemotePaymentMethod[]) => {
   const extended: PaymentMethod[] = methods.map((method: RemotePaymentMethod) => buildLocalPaymentMethod(method))

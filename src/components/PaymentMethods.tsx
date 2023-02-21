@@ -1,4 +1,4 @@
-import { PaymentMethod } from "../model/LocalPaymentMethod"
+import { PaymentMethod } from "../model/PaymentMethod"
 
 export const PaymentMethods = ({ paymentMethods }: { paymentMethods: PaymentMethod[] }) => (
   <>
