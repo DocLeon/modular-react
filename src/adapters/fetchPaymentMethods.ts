@@ -1,4 +1,4 @@
-import { convertPaymentMethods } from "../model/convertPaymentMethods"
+import { convertPaymentMethods } from "../model/PaymentMethod"
 import { PaymentMethod } from "../types/PaymentMethod"
 
 export const fetchPaymentMethods = async () => {

@@ -1,4 +1,4 @@
-import { RemotePaymentMethod } from "../types/PaymentMethod"
+import { RemotePaymentMethod } from "../../types/PaymentMethod"
 
 export const buildLocalPaymentMethod = (remotePaymentMethod: RemotePaymentMethod) => ({
   provider: remotePaymentMethod.name,
