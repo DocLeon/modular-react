@@ -1,16 +1,11 @@
-import { PaymentMethods } from "./PaymentMethods"
-import { usePaymentMethods } from "../hooks/usePaymentMethods"
-import { useRoundUp } from "../hooks/useRoundUp"
+import {PaymentMethods} from "./PaymentMethods"
+import {usePaymentMethods} from "../hooks/usePaymentMethods"
+import {useRoundUp} from "../hooks/useRoundUp"
+import {DonationBox} from "./DonationBox";
 
-const formatLabel = (agreeToDonate: boolean, tip: number) => {
-  return agreeToDonate
-    ? "Thanks for the donation"
-    : `I would like to donate £${tip} to charity`
-}
-
-export const Payment = ({amount}: {amount : number}) => {
+export const Payment = ({amount, countryCode}: {amount : number, countryCode : string}) => {
   const paymentMethods = usePaymentMethods()
-  const {agreeToDonate, updateAgreeToDonate, total, tip} = useRoundUp(amount)
+  const {agreeToDonate, updateAgreeToDonate, total, tip} = useRoundUp(amount, countryCode)
   return (
     <div>
       <h3>Payment</h3>
@@ -18,19 +13,12 @@ export const Payment = ({amount}: {amount : number}) => {
         <PaymentMethods paymentMethods = {paymentMethods}/>
       </div>
       <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={agreeToDonate}
-            onChange={updateAgreeToDonate}
-          />
-          <p>
-            {formatLabel(agreeToDonate, tip)
-            }
-          </p>
-        </label>
-        <button>£{total}</button>
+        <DonationBox agreeToDonate={agreeToDonate}
+                     updateAgreeToDonate = {updateAgreeToDonate}
+                     tip={tip}
+                     countryCode={countryCode}/>
+        <button>{countryCode === 'JP' ? '¥':'£'}{total}</button>
       </div>
     </div>
-  )
-}
+    )
+  }
